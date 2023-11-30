@@ -3,6 +3,7 @@ import { Router } from "express";
 import { ajouterUtilisateur,listUtilisateurs,UtilisateursParId,modifierUtilisateur,supprimerUtilisateur } from "../controllers/utilisateurs.js";
 
 import { verifierToken } from "../Auth/autorisation.js";
+//import utilisateurRules from "../Validations/utilisateurValidation.js";
 
 const routeUtilisateurs = Router();
 

@@ -30,12 +30,12 @@ try{
 
 //Ajouter un rôle.
 export const ajouterRole = async(req,res)=> {
-const role = {   nom} = req.body;
+const  {nom} = req.body;
 //const motDePasseCrypter= 
 
-const Role = {  nom}
+const role = {  nom}
 try{
-await Role.create(Role)
+await Roles.create(role)
 res.status(201).json({message:"Le rôle  a été ajouté avec succès."})
 }catch(error){
     res.status(400).json({message:"Problème lors de la création du nouveau rôle."})

@@ -2,7 +2,7 @@
 import { Utilisateurs } from "../models/index.js";
 
 //Importer le module qui cree le jeton d'authentification (token)
-import  Jwt  from 'jsonwebtoken';
+import  jwt  from 'jsonwebtoken';
 
 //Importer le module de hachage
 import bcrypt from 'bcryptjs';

@@ -30,7 +30,7 @@ try{
 
 //Ajouter un commentaire.
 export const ajouterCommentaire = async(req,res)=> {
-const commentaire = { texteDuCommentaire,note,dateCommande} = req.body;
+const  { texteDuCommentaire,note,dateCommande} = req.body;
 //const motDePasseCrypter= 
 
 const Commentaires = { texteDuCommentaire,note,dateCommande}

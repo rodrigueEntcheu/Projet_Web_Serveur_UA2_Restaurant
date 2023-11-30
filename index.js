@@ -34,7 +34,7 @@ import { UtilisateursParId,listUtilisateurs } from './controllers/utilisateurs.j
 import routeUtilisateurs from './routes/routeUtilisateurs.js';
 import routerAuth  from './routes/routeAuth.js'
 
-database.sync();
+database.sync({alter:true});
 
 const { PORT } = dotenv.config().parsed;
 
@@ -50,8 +50,8 @@ false }))
 
 app.get('/salutation',(req,res)=>{res.send('Bonjour tout le monde')})
 
-app.get('/adresses de livraison', listAdressesDeLivraison);
-app.get('/adresses de livraison/:id', adresseDeLivraisonParId);
+app.get('/adresses_de_livraison', listAdressesDeLivraison);
+app.get('/adresses_de_livraison/:id', adresseDeLivraisonParId);
 
 app.get('/clients', listClients);
 app.get('/clients/:id', ClientParId);
@@ -59,8 +59,8 @@ app.get('/clients/:id', ClientParId);
 app.get('/commentaires', listCommentaires);
 app.get('/commentaires/:id', CommentairesParId);
 
-app.get('/methodes de paiement', listMethodesDePaiement);
-app.get('/methodes de paiement/:id', MethodesDePaiementParId);
+app.get('/methodes_de_paiement', listMethodesDePaiement);
+app.get('/methodes_de_paiement/:id', MethodesDePaiementParId);
 
 app.get('/restaurants', listRestaurants);
 app.get('/restaurants/:id', RestaurantsParId);
@@ -68,21 +68,18 @@ app.get('/restaurants/:id', RestaurantsParId);
 app.get('/roles', listRoles);
 app.get('/roles/:id', RolesParId);
 
-app.get('/status des commandes', listStatusCommande);
-app.get('/status des commandes/:id', StatusDeCommandeParId);
-
-app.get('/utilisateurs', listUtilisateurs);
-app.get('/utilisateurs/:id', UtilisateursParId);
+app.get('/status_des_commandes', listStatusCommande);
+app.get('/status_des_commandes/:id', StatusDeCommandeParId);
 
 
 //Utilisation des routes.
-app.use('/adresses de livraison', routeAdresseDeLivraison);
+app.use('/adresses_de_livraison', routeAdresseDeLivraison);
 app.use('/clients', routeClient);
 app.use('/commentaires', routeCommentaire);
-app.use('/methodes de paiement', routeMethodesDePaiement);
+app.use('/methodes_de_paiement', routeMethodesDePaiement);
 app.use('/restaurants', routeRestaurants);
 app.use('/roles', routeRoles);
-app.use('/status des commandes', routeStatusCommande);
+app.use('/status_des_commandes', routeStatusCommande);
 
 app.use('/utilisateurs', routeUtilisateurs);
 

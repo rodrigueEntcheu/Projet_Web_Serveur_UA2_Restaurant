@@ -10,4 +10,4 @@ const StatusCommande = database.define('StatusCommande', {
     },
     { timestamps: false} //Ne pas avoir les colonnes createdAt and updatedAt automatiquement
     )
-    export default StatusCommande
+    export default StatusCommande;

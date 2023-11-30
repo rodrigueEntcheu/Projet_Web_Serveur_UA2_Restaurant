@@ -1,6 +1,14 @@
 import { where } from "sequelize";
 import { Utilisateurs } from "../models/index.js";
 
+//Importer le module de hachage
+import bcrypt from 'bcryptjs'
+
+//Ajout des validations
+//import { validationResult } from "express-validator";
+
+//Ajout validation a nous meme
+//import validerUtilisateur from "../validations/validationDeLUtilisateur.js";
 
 export const listUtilisateurs = async(req,res)=> {
 try
@@ -30,15 +38,22 @@ try{
 
 //Ajouter un utilisateur.
 export const ajouterUtilisateur = async(req,res)=> {
-const utilisateur = {nom, prenom, dateDeNaissance, photo,numeroDeTelephone,emailUtilisateur,adresseDeLivraison,motDePasse} = req.body;
+const {nom, prenom, dateDeNaissance, photo,numeroDeTelephone,emailUtilisateur,motDePasse} = req.body;
 
+//Erreur de validation. 
+//const errors = validationResult(req) //Fonction par defaut:
+//if (!errors.isEmpty()) {
+   // return res.status(400).json({ errors: errors.array() })   
+//}
 
  //Hacher le mot de passe
  const mdpCrypte=bcrypt.hashSync(motDePasse,10)
 
-const Utilisateur = {nom, prenom, dateDeNaissance, photo,numeroDeTelephone,emailUtilisateur,adresseDeLivraison,motDePasse : mdpCrypte}
+
+
+const utilisateur = {nom, prenom, dateDeNaissance, photo,numeroDeTelephone,emailUtilisateur,motDePasse:mdpCrypte}
 try{
-await Utilisateur.create(Utilisateur)
+await Utilisateurs.create(utilisateur)
 res.status(201).json({message:"Le nouvel utilisateur a été ajouté avec succès."})
 }catch(error){
     res.status(400).json({message:"Problème lors de la création du nouvel utilisateur."})

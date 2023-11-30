@@ -13,7 +13,7 @@ catch(error){
     res.json({error: error.message})
 }
 }
-
+//Hellogi
 export const ClientParId = async(req,res)=> {
 const id = req.params.id;
 
@@ -30,12 +30,12 @@ try{
 
 //Ajouter un client.
 export const ajouterClient = async(req,res)=> {
-const client = { nom,prenom,adresseEmail,numeroDeTelephone,adresseDeLivraison,motDePasse} = req.body;
+const  { nom,prenom,adresseEmail,numeroDeTelephone,adresseDeLivraison,motDePasse} = req.body;
 //const motDePasseCrypter= 
 
-const Client = { nom,prenom,adresseEmail,numeroDeTelephone,adresseDeLivraison,motDePasse} 
+const client = { nom,prenom,adresseEmail,numeroDeTelephone,adresseDeLivraison,motDePasse} 
 try{
-await Client.create(Client)
+await Clients.create(client)
 res.status(201).json({message:"Le client a été ajoutée avec succès."})
 }catch(error){
     res.status(400).json({message:"problème lors de la création du client."})

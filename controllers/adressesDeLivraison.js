@@ -1,4 +1,4 @@
-import { where } from "sequelize";
+
 import { AdressesDeLivraison } from "../models/index.js";
 
 export const listAdressesDeLivraison = async(req,res)=> {
@@ -19,7 +19,7 @@ const id = req.params.id;
 
 try{
     const result = await AdressesDeLivraison.findByPk({id});
-    res.status(200).json({data:adresseDeLivraison})
+    res.status(200).json({data:result})
 
 }catch(error){
     res.status(404).json({message:error.message})
@@ -30,21 +30,20 @@ try{
 //Ajouter une adresse de livraison
 
 export const ajouterAdressesDeLivraison = async(req,res)=> {
-const adresseDeLivraison = { adresseDestinataire,nomDestinataire,prenomDestinataire,numeroDeTelephone} = req.body;
+
+ // Destructuration
+    const  {adresseDestinataire,nomDestinataire,prenomDestinataire,numeroDeTelephone} = req.body;
 
 
 //const motDePasseCrypter= 
-
- // Destructurer si necessaire
-// const { nom, prenom, email, motDePasse, dateDeNaissance } = req.body
     
  //Hacher le mot de passe
 // const mdpCrypte=bcrypt.hashSync(motDePasse,10)
 
 
-const AdresseDeLivraison = { adresseDestinataire,nomDestinataire,prenomDestinataire,numeroDeTelephone}
-try{
-await AdresseDeLivraison.create(AdresseDeLivraison)
+const adresseDeLivraison = {adresseDestinataire,nomDestinataire,prenomDestinataire,numeroDeTelephone}
+try{ 
+await AdressesDeLivraison.create(adresseDeLivraison)
 res.status(201).json({message:"L' adresse de livraison a été ajoutée avec succès."})
 }catch(error){
     res.status(400).json({message:"problème lors de la création de l'adresse de livraison."})
